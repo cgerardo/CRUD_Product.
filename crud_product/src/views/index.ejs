@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Product</title>
+
+    <!--BOOTSTRAP 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark mb-4">
+
+        <a href="/" class="navbar-brand">Crud Product</a>
+
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <!--FROM-->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Insert a name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="description" cols="80" class="form-control" placeholder="Insert a description"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Add
+                            </button>
+
+                        </form>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-md-7">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Operation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0; i<products.length; i++) { %>
+                            <tr>
+                                <td><%= i+1 %></td> 
+                                <td><%= products[i].name %></td>
+                                <td><%= products[i].description %></td>
+                                <td>
+                                    <a href="/turn/<%= products[i]._id %>" 
+                                        class="btn <%= products[i].status ? 'btn-success' : 'btn-dark' %>">
+                                        Done
+                                    </a>
+                                    <a href="/delete/<%= products[i]._id %>" class="btn btn-danger">Delete</a>
+                                    <a href="/edit/<%= products[i]._id %>" class="btn btn-info">Edit</a>
+                                </td>
+                            </tr>
+                        <% } %> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Product</title>
+
+    <!--BOOTSTRAP 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark mb-4">
+
+        <a href="/" class="navbar-brand">Crud Product</a>
+
+    </nav>
+    <div class="container">
+        <div class="row"> 
+            <div class="col-md-5 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/ediit/<%= product._id %>" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Insert a name" class="form-control" value="<%= product.name %>">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="description" cols="80" class="form-control" placeholder="Insert a description"><%= product.description %></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Update
+                            </button>
+ 
+                        </form>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>
